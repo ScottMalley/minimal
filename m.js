@@ -286,7 +286,9 @@
 			if(typeof(name) == 'undefined'){name = "circ_temp";}
 
 			svg.append("g").attr("id", name);
+
 			svg.select("#"+name).selectAll("."+name)
+				.data(pathPoints)
 				.enter().append("circle")
 				.attr("cx", function(d){return d.x;})
 				.attr("cy", function(d){return d.y;})
