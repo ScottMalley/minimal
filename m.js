@@ -279,6 +279,20 @@
 	        return [cx / f, cy / f];
 		}
 
+		m.plotCircles = function(d3, svg, pathPoints, name, attr){
+			if(typeof(attr) == 'undefined'){attr = {};}
+			if(typeof(attr.r) == 'undefined'){attr.r = 10;}
+			if(typeof(attr.fill) == 'undefined'){attr.fiill = "black";}
+			if(typeof(name) == 'undefined'){name = "circ_temp";}
+
+			svg.append("g").attr("id", name);
+			svg.select("#"+name).selectAll("."+name)
+				.enter().append("circle")
+				.attr("cx", function(d){return d.x;})
+				.attr("cy", function(d){return d.y;})
+				.attr(attr);
+		}
+
 		m.roughBackground = function(w, h, dx, N){
 			var lines = [];
 			var n=0;
